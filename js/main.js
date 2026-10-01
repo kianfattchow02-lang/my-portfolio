@@ -186,7 +186,7 @@ function initContactForm() {
         if (submitBtn) submitBtn.disabled = true;
 
         const serviceID = 'service_cr30jxb';
-        const templateID = 'template_contact'; // <--- replace with your EmailJS template ID
+        const templateID = 'template_bhvyjzj'; // <--- replace with your EmailJS template ID
 
         if (!window.emailjs || typeof emailjs.sendForm !== 'function') {
             alert('Email service not available. Ensure the EmailJS SDK is loaded and initialized.');
