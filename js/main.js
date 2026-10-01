@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     initLogbookAccordion();
     initLogbookSearch();
     initScrollReveal();
+    // Initialize EmailJS (replace with your public key)
+    if (window.emailjs && typeof emailjs.init === 'function') {
+        emailjs.init('HQ8u8OhC-tn1hj96V');
+    } else {
+        console.warn('EmailJS SDK not detected. Make sure the SDK script is included and replace YOUR_EMAILJS_PUBLIC_KEY.');
+    }
+
     initContactForm();
     initDownloadCV();
     initBackToTop();
@@ -171,15 +178,33 @@ function initContactForm() {
 
     if (!contactForm) return;
 
+    const submitBtn = contactForm.querySelector('.submit-button');
+
     contactForm.addEventListener("submit", event => {
         event.preventDefault();
 
-        alert(
-            "Thank you for your message! " +
-            "This is currently a demo form."
-        );
+        if (submitBtn) submitBtn.disabled = true;
 
-        contactForm.reset();
+        const serviceID = 'service_cr30jxb';
+        const templateID = 'template_contact'; // <--- replace with your EmailJS template ID
+
+        if (!window.emailjs || typeof emailjs.sendForm !== 'function') {
+            alert('Email service not available. Ensure the EmailJS SDK is loaded and initialized.');
+            if (submitBtn) submitBtn.disabled = false;
+            return;
+        }
+
+        emailjs.sendForm(serviceID, templateID, contactForm)
+            .then(() => {
+                alert('Thank you — your message was sent.');
+                contactForm.reset();
+            }, (err) => {
+                console.error('EmailJS error:', err);
+                alert('Sorry — the message could not be sent. Please try again later.');
+            })
+            .finally(() => {
+                if (submitBtn) submitBtn.disabled = false;
+            });
     });
 }
 
