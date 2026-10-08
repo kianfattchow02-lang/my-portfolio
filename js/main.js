@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     initContactForm();
-    initDownloadCV();
     initBackToTop();
     initCurrentYear();
 });
@@ -205,24 +204,6 @@ function initContactForm() {
             .finally(() => {
                 if (submitBtn) submitBtn.disabled = false;
             });
-    });
-}
-
-/* =========================================================
-   DOWNLOAD CV
-========================================================= */
-
-function initDownloadCV() {
-    const downloadButton = document.getElementById("downloadCvButton");
-
-    if (!downloadButton) return;
-
-    downloadButton.addEventListener("click", event => {
-        event.preventDefault();
-
-        alert(
-            "Replace this button with your actual CV PDF file."
-        );
     });
 }
 
