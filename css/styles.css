@@ -558,36 +558,35 @@
             box-shadow: var(--shadow);
         }
 
+            /* PROFILE PICTURE CONTAINER */
 
-        .profile-picture {
-            height: 175px;
+            .profile-picture {
+                width: 100%;
+                height: 220px;
+                overflow: hidden;
 
-            display: grid;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-            place-items: center;
-
-            background:
-                linear-gradient(
+                background: linear-gradient(
                     145deg,
                     var(--navy),
                     var(--navy-3)
                 );
 
-            border-radius: 13px;
+                border-radius: 13px;
+            }
 
-            color: white;
+            /* PROFILE IMAGE */
 
-            font-family: "Playfair Display", serif;
-
-            font-size: 4rem;
-        }
-
-        
-        .profile-picture img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+            .profile-picture img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center top;
+            }
 
         .profile-details {
             display: flex;
@@ -1259,7 +1258,7 @@
         .projects-grid {
             display: grid;
 
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
 
             gap: 15px;
 
